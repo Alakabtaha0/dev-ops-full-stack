@@ -2,3 +2,8 @@
     width: 100vw;
     height: 100vh;
 }
+
+.active {
+    background-color: #1b2853 !important;
+    color: #04c4ca !important;
+}
