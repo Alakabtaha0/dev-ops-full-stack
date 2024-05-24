@@ -1,12 +1,22 @@
+// Component Props
 export interface NavBarProps {
     currentRegion: string;
     setCurrentRegion: React.Dispatch<React.SetStateAction<string>>;
 };
 
+export interface SmallPanelProps {
+    name: string;
+    value: string | number | boolean | null;
+}
+
+export interface LargePanelProps extends WorkerInfo {
+    name: string;
+}
+
 // Worker types
 export type BlockedKeys = {
     id: string;
-    numberOfTimesBlocked: number;
+    number_of_times_blocked: number;
     date: string;
 };
 
@@ -17,17 +27,17 @@ export type TopKeys = {
 
 export type WorkerInfo = {
     idle: string;
-    recenetlyBlockedKeys: BlockedKeys[];
-    timeToReturn: number;
-    topKeys: TopKeys[];
-    waitTime: number;
+    recently_blocked_keys: BlockedKeys[];
+    time_to_return: number;
+    top_keys: TopKeys[];
+    wait_time: number;
     waiting: number;
     workers: number;
 };
 
 export interface Worker {
     name: string;
-    worker: WorkerInfo;
+    workerInformation: WorkerInfo;
 };
 
 
