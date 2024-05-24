@@ -1,16 +1,25 @@
 import React from 'react';
 import "../styles/navbar.css";
+import { NavBarProps } from '../utils/types';
 
-const NavBar = () => {
+const NavBar: React.FC<NavBarProps> = ({ currentRegion, setCurrentRegion }) => {
+
+    const handleClick = (region: string) => {
+        setCurrentRegion(region);
+    }
+
     return (
         <div className='nav'>
             <ul className='nav-list'>
-                <li className='active'>us-east</li>
-                <li>us-west</li>
-                <li>eu-west</li>
-                <li>eu-central</li>
-                <li>sa-east</li>
-                <li>ap-southeast</li>
+                {['us-east', 'us-west', 'eu-west', 'eu-central', 'sa-east', 'ap-southeast'].map((region, index) => (
+                    <li
+                        key={index}
+                        className={currentRegion === region ? 'active' : ''}
+                        onClick={() => handleClick(region)}
+                    >
+                        {region}
+                    </li>
+                ))}
             </ul>
         </div>
     )

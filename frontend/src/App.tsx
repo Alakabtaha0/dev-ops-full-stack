@@ -8,16 +8,27 @@ function App() {
 		onOpen: () => console.log('opened'),
 		onClose: () => console.log('closed'),
 	});
+	const [services, setServices] = useState<[]>([]);
+	const [workers, setWorkers] = useState<[]>([]);
+	const [region, setRegion] = useState<string>('us-east');
 
 	useEffect(() => {
 		if (lastMessage !== null) {
-			console.log(lastMessage.data);
+			const data = JSON.parse(lastMessage.data);
+			console.log(data);
+			setServices(data.services);
+			setWorkers(data.worker);
+			console.log(services, workers)
 		}
 	}, [lastMessage]);
 
+	useEffect(() => {
+		sendMessage(region);
+	}, [region]);
+
 	return (
 		<div className="set-page">
-			<NavBar />
+			<NavBar currentRegion={region} setCurrentRegion={setRegion} />
 		</div>
 	);
 }
