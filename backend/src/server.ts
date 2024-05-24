@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import initWebSocket from './websocket';
+import {initWebSocket} from './websocket';
 import { config } from 'dotenv';
 
 config();
