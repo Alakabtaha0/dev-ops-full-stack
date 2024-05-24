@@ -24,24 +24,31 @@
 
 .panel-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+    grid-template-columns: 1fr 1fr;
 }
 
 .large-panel p {
     font-weight: bold;
+    display: inline-block;
+    text-align: center;
+    margin: 30px 20px;
 }
 
 .display-panel-info {
     padding-left: 30px;
+    overflow-y: scroll;
 }
 
-.large-panel li {
-    list-style-type: none;
-    padding: 5px;
+.display-panel-info td {
+    text-align: center;
+    font-size: 15px;
     border-bottom: 1px solid white;
     border-top: 1px solid white;
-    margin-bottom: 3px;
+}
+
+.display-panel-info th {
+    font-weight: bold;
+    color: #f3ce75;
 }
 
 /* General styles */

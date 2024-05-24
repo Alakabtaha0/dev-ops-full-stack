@@ -18,7 +18,15 @@ function App() {
 		onError: (error) => console.error('WebSocket error: ', error),
 	});
 
-
+	/**
+	 * Effect hook that processes the last received WebSocket message.
+	 * 
+	 * When a new message is received, this effect parses the message data, updates the services
+	 * and workers state, and conditionally updates the region state if it differs from the current region.
+	 * 
+	 * Dependencies:
+	 * - `lastMessage`: The last message received from the WebSocket connection.
+	*/
 	useEffect(() => {
 		if (lastMessage !== null) {
 			const data = JSON.parse(lastMessage.data);
@@ -31,6 +39,15 @@ function App() {
 		}
 	}, [lastMessage]);
 
+
+	/**
+	 * Effect hook that sends the current region to the WebSocket server when the region changes.
+	 * 
+	 * This effect sends the new region value to the WebSocket server whenever the `region` state changes in NavBar.
+	 * 
+	 * Dependencies:
+	 * - `region`: The current region state.
+	*/
 	useEffect(() => {
 		if (region !== "") sendMessage(region);
 	}, [region]);
